@@ -1,0 +1,108 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0b3ff;
+  }
+  
+  header {
+    background-color: #1f1f1f;
+    color: #e0b3ff;
+    padding: 1em;
+    text-align: center;
+    border-bottom: 2px solid #9d4edd;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+  }
+  
+  nav a {
+    color: #e0b3ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  nav a:hover {
+    color: #9d4edd;
+  }
+  
+  main {
+    padding: 2em;
+  }
+  
+  section {
+    margin-bottom: 3em;
+    padding: 1.5em;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #9d4edd33;
+  }
+  
+  h1, h2 {
+    color: #ffffff;
+  }
+  
+  footer {
+    background-color: #1f1f1f;
+    color: #9d4edd;
+    text-align: center;
+    padding: 1em;
+    border-top: 2px solid #9d4edd;
+  }
+  
+  /* Animação de bolhas no fundo */
+  .background-bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .background-bubbles::before,
+  .background-bubbles::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #9d4edd55;
+    border-radius: 50%;
+    animation: float 10s linear infinite;
+  }
+  
+  .background-bubbles::after {
+    width: 30px;
+    height: 30px;
+    left: 70%;
+    animation-delay: 5s;
+  }
+  
+  @keyframes float {
+    0% {
+      top: 100%;
+      left: 30%;
+      transform: scale(0.5);
+      opacity: 0.2;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.5;
+    }
+    100% {
+      top: -10%;
+      left: 35%;
+      transform: scale(0.5);
+      opacity: 0;
+    }
+  }
+  
