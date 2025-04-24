@@ -154,7 +154,7 @@ main section p, main section ul {
   animation-delay: 0.6s;
 }
 
-/* Adicionando design responsivo */
+/* Design responsivo */
 @media (max-width: 768px) {
   body {
     font-size: 16px;

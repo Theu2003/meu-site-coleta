@@ -1,6 +1,6 @@
 console.log("Site de coleta de lixo e recicláveis carregado com sucesso!");
 
-// Adicionando animações ao rolar a página
+//Animações ao rolar a página
 const sections = document.querySelectorAll('section');
 
 function animateOnScroll() {
@@ -17,7 +17,7 @@ function animateOnScroll() {
 
 window.addEventListener('scroll', animateOnScroll);
 
-// Adicionando botão de voltar ao topo
+// Botão de voltar ao topo
 const backToTopButton = document.createElement('button');
 backToTopButton.textContent = '⬆️';
 backToTopButton.id = 'back-to-top';
