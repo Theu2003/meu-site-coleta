@@ -105,3 +105,54 @@ footer {
         opacity: 0;
     }
 }
+
+/* Adicionando design responsivo */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  section {
+    padding: 1em;
+    margin-bottom: 2em;
+  }
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 0.5em;
+  }
+
+  nav ul {
+    gap: 0.5em;
+  }
+
+  section {
+    padding: 0.8em;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+}

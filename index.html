@@ -9,15 +9,15 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="background-bubbles"></div>
+  <div class="background-bubbles" aria-hidden="true"></div> <!-- Elemento decorativo marcado como oculto para leitores de tela -->
 
   <header>
     <h1>Projeto Sustentável</h1>
-    <nav>
+    <nav aria-label="Menu principal">
       <ul>
         <li><a href="#inicio">Início</a></li>
         <li><a href="#agenda">Agenda de Coleta</a></li>
-        <li><a href="educacao.html">Educação Ambiental</a></li> <!-- Link atualizado -->
+        <li><a href="educacao.html">Educação Ambiental</a></li>
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
@@ -43,8 +43,8 @@
     <section id="contato">
       <h2>Entre em contato</h2>
       <p> Um projeto novo. Se você quiser mais informação, é só entrar em comunicação pelo WhatsApp ou pelo Instagram.<br>
-        ZAP: (38) 99896-2288<br>
-        Instagram: @e_o__mm</p>
+        ZAP: <a href="tel:+5538998962288">(38) 99896-2288</a><br> <!-- Link para chamada telefônica -->
+        Instagram: <a href="https://instagram.com/e_o__mm" target="_blank" rel="noopener">@e_o__mm</a></p> <!-- Link acessível com abertura em nova aba -->
       <p>Formulário de solicitação ou denúncias — em breve!</p>
     </section>
   </main>
