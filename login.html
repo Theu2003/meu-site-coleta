@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Projeto Sustentável</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Login</h1>
+  </header>
+
+  <main>
+    <section id="login">
+      <h2>Acesse sua conta</h2>
+      <div id="login-options">
+        <button id="google-login">Entrar com Google</button>
+        <button id="phone-login">Entrar com Telefone</button>
+      </div>
+      <form id="login-form" action="#" method="POST" style="display: none;">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
+
+        <button type="submit">Entrar</button>
+      </form>
+      <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+    </section>
+
+    <section id="notification" style="display: none;">
+      <h2>Notifique sobre lixo reciclável</h2>
+      <form id="notification-form" action="#" method="POST">
+        <label for="type">Tipo de lixo:</label>
+        <select id="type" name="type" required>
+          <option value="papel">Papel</option>
+          <option value="plástico">Plástico</option>
+          <option value="vidro">Vidro</option>
+          <option value="metal">Metal</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" placeholder="Descreva o lixo reciclável" required></textarea>
+
+        <button type="submit">Notificar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Projeto Sustentável</p>
+  </footer>
+</body>
+</html>
