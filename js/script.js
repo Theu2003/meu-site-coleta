@@ -99,6 +99,13 @@ const firebaseConfig = {
 // Inicializa o Firebase
 firebase.initializeApp(firebaseConfig);
 
+// Redirecionar para a tela inicial após login bem-sucedido
+firebase.auth().onAuthStateChanged((user) => {
+  if (user && window.location.pathname.endsWith('login.html')) {
+    window.location.href = 'index.html';
+  }
+});
+
 // Configuração do Firestore
 const db = firebase.firestore();
 
