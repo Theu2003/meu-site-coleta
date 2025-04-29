@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendar Coleta - Projeto Sustentável</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Agendar Coleta</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="educacao.html">Educação Ambiental</a></li>
+        <li><a href="agenda.html" class="active">Agendar Coleta</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Agende a Coleta do Seu Lixo</h2>
+      <form id="schedule-form">
+        <label for="type">Tipo de Lixo:</label>
+        <select id="type" name="type" required>
+          <option value="reciclavel">Reciclável</option>
+          <option value="outro">Outro</option>
+        </select>
+
+        <label for="address">Endereço:</label>
+        <input type="text" id="address" name="address" placeholder="Digite o endereço para coleta" required>
+
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description" placeholder="Descreva o lixo a ser coletado" required></textarea>
+
+        <label for="quantity">Quantidade (em kg):</label>
+        <input type="number" id="quantity" name="quantity" placeholder="Digite a quantidade aproximada" required>
+
+        <button type="submit">Agendar Coleta</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Projeto Sustentável. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

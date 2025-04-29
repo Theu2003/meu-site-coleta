@@ -163,4 +163,162 @@ phoneLoginButton.addEventListener('click', () => {
     });
 });
 
+// Adicionando spinner para feedback visual
+function showSpinner() {
+  const spinner = document.createElement('div');
+  spinner.id = 'spinner';
+  spinner.style.position = 'fixed';
+  spinner.style.top = '50%';
+  spinner.style.left = '50%';
+  spinner.style.transform = 'translate(-50%, -50%)';
+  spinner.style.border = '4px solid #f3f3f3';
+  spinner.style.borderTop = '4px solid #6a1b9a';
+  spinner.style.borderRadius = '50%';
+  spinner.style.width = '40px';
+  spinner.style.height = '40px';
+  spinner.style.animation = 'spin 1s linear infinite';
+  document.body.appendChild(spinner);
+}
+
+function hideSpinner() {
+  const spinner = document.getElementById('spinner');
+  if (spinner) {
+    spinner.remove();
+  }
+}
+
+// Adicionando mensagens de erro detalhadas no login
+if (loginForm) {
+  loginForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    showSpinner();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        hideSpinner();
+        alert('Login realizado com sucesso!');
+        window.location.href = 'index.html';
+      })
+      .catch((error) => {
+        hideSpinner();
+        let errorMessage;
+        switch (error.code) {
+          case 'auth/user-not-found':
+            errorMessage = 'Usuário não encontrado. Verifique o email digitado.';
+            break;
+          case 'auth/wrong-password':
+            errorMessage = 'Senha incorreta. Tente novamente.';
+            break;
+          default:
+            errorMessage = 'Erro ao fazer login. Tente novamente mais tarde.';
+        }
+        alert(errorMessage);
+      });
+  });
+}
+
+// Adicionando mensagens de erro detalhadas no agendamento de coleta
+if (scheduleForm) {
+  scheduleForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    showSpinner();
+    const type = document.getElementById('type').value;
+    const address = document.getElementById('address').value;
+    const description = document.getElementById('description').value;
+    const quantity = document.getElementById('quantity').value;
+
+    const user = firebase.auth().currentUser;
+    if (user) {
+      db.collection('schedules').add({
+        type,
+        address,
+        description,
+        quantity,
+        userId: user.uid,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(() => {
+        hideSpinner();
+        alert('Coleta agendada com sucesso!');
+        scheduleForm.reset();
+      })
+      .catch((error) => {
+        hideSpinner();
+        console.error('Erro ao agendar coleta:', error);
+        alert('Erro ao agendar coleta. Tente novamente mais tarde.');
+      });
+    } else {
+      hideSpinner();
+      alert('Você precisa estar logado para agendar uma coleta.');
+    }
+  });
+}
+
+// Adicionando botão de logout
+const logoutButton = document.createElement('button');
+logoutButton.textContent = 'Sair';
+logoutButton.id = 'logout-button';
+logoutButton.style.position = 'fixed';
+logoutButton.style.top = '20px';
+logoutButton.style.right = '20px';
+logoutButton.style.padding = '10px';
+logoutButton.style.border = 'none';
+logoutButton.style.borderRadius = '5px';
+logoutButton.style.backgroundColor = '#6a1b9a';
+logoutButton.style.color = '#fff';
+logoutButton.style.cursor = 'pointer';
+logoutButton.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+logoutButton.style.zIndex = '1000';
+
+document.body.appendChild(logoutButton);
+
+logoutButton.addEventListener('click', () => {
+  firebase.auth().signOut()
+    .then(() => {
+      alert('Você saiu da sua conta.');
+      window.location.href = 'login.html';
+    })
+    .catch((error) => {
+      console.error('Erro ao sair:', error);
+      alert('Erro ao sair. Tente novamente.');
+    });
+});
+
+// Animação do spinner
+const style = document.createElement('style');
+style.textContent = `
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}`;
+document.head.appendChild(style);
+
+// Alternar entre telas com base no tipo de usuário
+const loginButton = document.getElementById('login-button');
+const registerButton = document.getElementById('register-button');
+const userDashboard = document.getElementById('user-dashboard');
+const collectorDashboard = document.getElementById('collector-dashboard');
+const welcomeSection = document.getElementById('welcome');
+
+loginButton.addEventListener('click', () => {
+  // Simula o login e define o tipo de usuário
+  const userType = prompt('Digite o tipo de usuário (cidadão ou coletor):').toLowerCase();
+
+  if (userType === 'cidadão') {
+    welcomeSection.style.display = 'none';
+    userDashboard.style.display = 'block';
+  } else if (userType === 'coletor') {
+    welcomeSection.style.display = 'none';
+    collectorDashboard.style.display = 'block';
+  } else {
+    alert('Tipo de usuário inválido. Tente novamente.');
+  }
+});
+
+registerButton.addEventListener('click', () => {
+  alert('Funcionalidade de cadastro em breve!');
+});
+
 console.log("Melhorias interativas adicionadas com sucesso!");
