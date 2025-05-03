@@ -12,6 +12,7 @@ header {
   padding: 1em;
   text-align: center;
   border-bottom: 2px solid #9d4edd;
+  position: relative;
 }
 
 nav ul {
@@ -284,4 +285,17 @@ h1 {
   .container {
     width: 90%;
   }
+}
+
+.login-button {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #9d4edd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
 }

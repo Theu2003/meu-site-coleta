@@ -21,16 +21,16 @@
     <div class="content">      
       <!-- Formulário de Login -->
       <div id="login" class="active">
-        <form action="#" method="POST" onsubmit="return false;"> 
+        <form action="http://127.0.0.1:5000/login" method="POST"> 
           <h1>Login</h1> 
           <p> 
             <label for="email_login">Seu e-mail</label>
-            <input id="email_login" name="email_login" required="required" type="text" placeholder="E-mail"/>
+            <input id="email_login" name="username" required="required" type="text" placeholder="E-mail"/>
           </p>
           
           <p> 
             <label for="senha_login">Sua senha</label>
-            <input id="senha_login" name="senha_login" required="required" type="password" placeholder="Senha" /> 
+            <input id="senha_login" name="password" required="required" type="password" placeholder="Senha" /> 
           </p>
           
           <p> 
@@ -51,22 +51,22 @@
 
       <!-- Formulário de Cadastro -->
       <div id="cadastro">
-        <form method="post" action="#"> 
+        <form action="http://127.0.0.1:5000/register" method="POST"> 
           <h1>Cadastro</h1> 
           
           <p> 
             <label for="nome_cad">Seu nome</label>
-            <input id="nome_cad" name="nome_cad" required="required" type="text" placeholder="Nome" />
+            <input id="nome_cad" name="username" required="required" type="text" placeholder="Nome" />
           </p>
           
           <p> 
             <label for="email_cad">Seu e-mail</label>
-            <input id="email_cad" name="email_cad" required="required" type="email" placeholder="E-mail"/> 
+            <input id="email_cad" name="email" required="required" type="email" placeholder="E-mail"/> 
           </p>
           
           <p> 
             <label for="senha_cad">Sua senha</label>
-            <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="Senha"/>
+            <input id="senha_cad" name="password" required="required" type="password" placeholder="Senha"/>
           </p>
           
           <p> 
