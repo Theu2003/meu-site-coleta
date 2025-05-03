@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/userModel');
+const dotenv = require('dotenv');
+
+dotenv.config(); // Carrega variáveis de ambiente do arquivo .env
 
 // Controlador para registrar um novo usuário
 const register = async (req, res) => {
@@ -15,11 +18,13 @@ const register = async (req, res) => {
         if (err.message.includes('UNIQUE constraint failed')) {
           return res.status(400).json({ message: 'E-mail já cadastrado.' });
         }
+        console.error('Erro ao registrar usuário:', err);
         return res.status(500).json({ message: 'Erro ao registrar usuário.' });
       }
       res.status(201).json({ message: 'Usuário registrado com sucesso.', userId });
     });
   } catch (error) {
+    console.error('Erro no servidor ao registrar usuário:', error);
     res.status(500).json({ message: 'Erro no servidor.' });
   }
 };
@@ -32,6 +37,7 @@ const login = (req, res) => {
   }
   userModel.findUserByEmail(email, async (err, user) => {
     if (err) {
+      console.error('Erro no servidor ao buscar usuário:', err);
       return res.status(500).json({ message: 'Erro no servidor.' });
     }
     if (!user) {
@@ -41,7 +47,7 @@ const login = (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Credenciais inválidas.' });
     }
-    const token = jwt.sign({ id: user.id, email: user.email }, 'secreta', { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.status(200).json({ message: 'Login bem-sucedido.', token });
   });
 };

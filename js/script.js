@@ -1,17 +1,44 @@
+// Centraliza URLs da API
+const API_BASE_URL = 'http://localhost:3000/auth';
+
+// Função para exibir mensagens de erro
+function showError(input, message) {
+  const errorElement = document.createElement('small');
+  errorElement.textContent = message;
+  errorElement.style.color = 'red';
+  input.parentElement.appendChild(errorElement);
+  input.style.borderColor = 'red';
+}
+
+// Remove mensagens de erro anteriores
+function clearErrors(form) {
+  const errors = form.querySelectorAll('small');
+  errors.forEach(error => error.remove());
+  const inputs = form.querySelectorAll('input');
+  inputs.forEach(input => (input.style.borderColor = ''));
+}
+
 // Função para enviar dados de login ao back-end
 const loginForm = document.querySelector('#login-form');
 if (loginForm) {
   loginForm.addEventListener('submit', async function (e) {
     e.preventDefault();
+    clearErrors(loginForm);
 
-    const email = document.getElementById('email_login').value;
-    const password = document.getElementById('senha_login').value;
+    const email = document.getElementById('email_login');
+    const password = document.getElementById('senha_login');
+
+    if (!email.value || !password.value) {
+      if (!email.value) showError(email, 'E-mail é obrigatório.');
+      if (!password.value) showError(password, 'Senha é obrigatória.');
+      return;
+    }
 
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch(`${API_BASE_URL}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email: email.value, password: password.value })
       });
 
       const result = await response.json();
@@ -33,16 +60,24 @@ const registerForm = document.querySelector('#register-form');
 if (registerForm) {
   registerForm.addEventListener('submit', async function (e) {
     e.preventDefault();
+    clearErrors(registerForm);
 
-    const name = document.getElementById('nome_cad').value;
-    const email = document.getElementById('email_cad').value;
-    const password = document.getElementById('senha_cad').value;
+    const name = document.getElementById('nome_cad');
+    const email = document.getElementById('email_cad');
+    const password = document.getElementById('senha_cad');
+
+    if (!name.value || !email.value || !password.value) {
+      if (!name.value) showError(name, 'Nome é obrigatório.');
+      if (!email.value) showError(email, 'E-mail é obrigatório.');
+      if (!password.value) showError(password, 'Senha é obrigatória.');
+      return;
+    }
 
     try {
-      const response = await fetch('http://localhost:3000/auth/register', {
+      const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password })
+        body: JSON.stringify({ name: name.value, email: email.value, password: password.value })
       });
 
       const result = await response.json();
