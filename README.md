@@ -3,7 +3,7 @@
 Este repositório contém o código-fonte do site **Projeto Sustentável**, desenvolvido como parte de um Trabalho de Conclusão de Curso (TCC). O objetivo do projeto é criar um sistema de coleta de lixo para locais de difícil acesso e para resíduos recicláveis, promovendo um mundo mais limpo e sustentável.
 
 ## 🌐 Link do Site
-Acesse o site em: [Projeto Sustentável](https://projetosustentave.vercel.app/#contato)
+Acesse o site em: [Projeto Sustentável](https://projeto-teste-c5tc.vercel.app/)
 
 ## 📋 Funcionalidades
 - Informações sobre coleta de lixo reciclável.
